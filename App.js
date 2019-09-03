@@ -1,33 +1,16 @@
-import React, {Component} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+// import the screens we want to navigate
+import Start from './components/Start';
+import Chat from './components/Chat';
 
-export default class HelloWorld extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.box1}></View>
-        <View style={styles.box2}></View>
-        <View style={styles.box3}></View>
-      </View>
-    );
-  }
-}
+// import react Navigation
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column'
-  },
-  box1: {
-    flex:10,
-    backgroundColor: 'blue'
-  },
-  box2: {
-    flex:120,
-    backgroundColor: 'red'
-  },
-  box3: {
-    flex:50,
-    backgroundColor: 'green'
-  }
+// Create the navigator with 2 screens
+const navigator = createStackNavigator({
+  Start: { screen: Start },
+  Chat: { screen: Chat }
 });
+
+const navigatorContainer = createAppContainer(navigator);
+// Export it as the root component
+export default navigatorContainer;
