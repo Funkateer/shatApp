@@ -1,4 +1,5 @@
 import React from 'react';
+
 // import react UI components
 import {
   StyleSheet, Text, View, TextInput, ImageBackground, TouchableHighlight, TouchableOpacity
@@ -89,7 +90,7 @@ export default class Start extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   backgroundImage: {
     flex: 1,
@@ -100,16 +101,15 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 62,
     fontWeight: '600',
-    marginTop: 30
+    marginTop: 30,
   },
   entries: {
     width: '88%',
     height: '55%',
-    backgroundColor: '#fff',
+    backgroundColor: 'rgba(250, 250, 250, 0.87)',
     marginBottom: 90,
     justifyContent: 'center',
     alignItems: 'center',
-
   },
   input: {
     fontSize: 18,
@@ -119,12 +119,12 @@ const styles = StyleSheet.create({
     width: '88%',
     height:36,
     paddingHorizontal: 10,
-    marginBottom:20
+    marginBottom:20,
   },
   colorOption: {
     fontSize: 16,
     fontWeight: '300',
-    margin: 20
+    margin: 20,
   },
   button: {
     justifyContent: 'center',
@@ -133,25 +133,25 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 20,
     marginTop: 60,
-    borderRadius: 20
+    borderRadius: 20,
   },
   buttonLabel: {
     color: '#fff',
     fontWeight: '600',
-    fontSize: 16
+    fontSize: 16,
   },
   colors: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '72%',
     height: 40,
-    marginLeft: 12
+    marginLeft: 12,
   },
   black: {
     backgroundColor: '#090C08',
     height: 40,
     width: 40,
-    borderRadius: 80
+    borderRadius: 80,
   },
   black_active: {
     backgroundColor: '#fff',
@@ -159,13 +159,13 @@ const styles = StyleSheet.create({
     width: 40,
     borderRadius: 80,
     borderWidth:2,
-    borderColor: '#090C08'
+    borderColor: '#090C08',
   },
   violet: {
     backgroundColor: '#474056',
     height: 40,
     width: 40,
-    borderRadius: 80
+    borderRadius: 80,
   },
   violet_active: {
     backgroundColor: '#fff',
@@ -173,13 +173,13 @@ const styles = StyleSheet.create({
     width: 40,
     borderRadius: 80,
     borderWidth:2,
-    borderColor: '#474056'
+    borderColor: '#474056',
   },
   grey: {
     backgroundColor: '#8A95A5',
     height: 40,
     width: 40,
-    borderRadius: 80
+    borderRadius: 80,
   },
   grey_active: {
     backgroundColor: '#fff',
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
     width: 40,
     borderRadius: 80,
     borderWidth:2,
-    borderColor: '#8A95A5'
+    borderColor: '#8A95A5',
   },
   green: {
     backgroundColor: '#B9C6AE',
@@ -201,6 +201,6 @@ const styles = StyleSheet.create({
     width: 40,
     borderRadius: 80,
     borderWidth:2,
-    borderColor: '#B9C6AE'
+    borderColor: '#B9C6AE',
   }
 });

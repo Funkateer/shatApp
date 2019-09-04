@@ -1,6 +1,7 @@
-// component React from react library
 import React from 'react';
-// react components used in this file
+import { GiftedChat } from 'react-native-gifted-chat'
+
+// import react UI components
 import { StyleSheet, Text, View, Button, Navigator } from 'react-native';
 
 // class component

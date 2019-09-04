@@ -1,8 +1,7 @@
-// import react Navigation
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 
-// import the screens we want to navigate
+// import the navigation screens
 import Start from './components/Start';
 import Chat from './components/Chat';
 
