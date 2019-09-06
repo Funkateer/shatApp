@@ -1,8 +1,6 @@
 import React from 'react';
-
 // library for Android devices to keep input field above the keyboard
 import KeyboardSpacer from 'react-native-keyboard-spacer';
-
 // import react UI
 import {  View, Platform } from 'react-native';
 //library with chat UI
@@ -40,22 +38,33 @@ export default class Chat extends React.Component {
     })
   }
 
-    //function that appends new messages to the ones saved in state
-    onSend(messages = []) {
+  //function that appends new messages to the ones saved in state
+  onSend(messages = []) {
     this.setState(previousState => ({
       messages: GiftedChat.append(previousState.messages, messages),
     }))
   }
 
-  //navigation bar configuration
+
+  //function that styles the header bar and sets the the user’s name as the title
   static navigationOptions = ({ navigation }) => {
     return {
-      title: navigation.state.params.name
+      title: navigation.state.params.name,
+      headerStyle: {
+        backgroundColor: navigation.state.params.color,
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontSize: 20,
+        fontWeight: '600',
+      },
     };
-  }
+  };
 
-    //function that determines speech bubble background color
-    renderBubble(props) {
+
+
+  //function that determines speech bubble background color
+  renderBubble(props) {
     return (
       <Bubble
         {...props}
@@ -78,10 +87,7 @@ export default class Chat extends React.Component {
     const chosenColor = this.props.navigation.state.params.color;
     return (
       //set the background to the one passed in the params
-      <View style={{flex: 1,
-        backgroundColor: chosenColor,
-      }}
-      >
+      <View style={{flex: 1,backgroundColor: chosenColor,}}>
         <GiftedChat
           renderBubble={this.renderBubble.bind(this)}
           messages={this.state.messages}
@@ -92,6 +98,6 @@ export default class Chat extends React.Component {
         />
         { Platform.OS === 'android' ? <KeyboardSpacer /> : null }
       </View>
-    )
-  }
-}
+    )//return
+  }//render
+} //Chat class component
