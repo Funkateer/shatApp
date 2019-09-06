@@ -34,7 +34,7 @@ export default class Start extends React.Component {
               style={styles.nameInput}
               onChangeText={(name) => this.setState({ name })}
               value={this.state.name}
-              placeholder= 'Enter Your Name' 
+              placeholder= 'Enter Your Name'
             />
           </View>
 
