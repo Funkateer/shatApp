@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
   colors: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    width: '72%',
+    width: '77%',
     height: 40,
     marginBottom:'20%',
   },
