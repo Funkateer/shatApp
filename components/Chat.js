@@ -1,18 +1,17 @@
 import React from 'react';
 // library for Android devices to keep input field above the keyboard
 import KeyboardSpacer from 'react-native-keyboard-spacer';
-
-// import react UI
+// import React native UI
 import {  View, Platform, Text } from 'react-native';
-//library with chat UI
+//library with GiftedChat UI
 import { GiftedChat, Bubble } from 'react-native-gifted-chat';
+
 // import db firestore from firebase
 const firebase = require('firebase');
 require('firebase/firestore');
 
 // class component
 export default class Chat extends React.Component {
-
   constructor() {
     super();
     // firestore credentials for shatApp db
@@ -25,21 +24,24 @@ export default class Chat extends React.Component {
       messagingSenderId: "313707926543",
       appId: "1:313707926543:web:8deff3b3941930bc403f7a"
     };
-
     // app initialization
     if (!firebase.apps.length) { //avoid re-initializing
       firebase.initializeApp(firebaseConfig)
     }
-
     //reference to firstore collection 'messages' where chat messages are stored
     this.referenceMessages = firebase.firestore().collection('messages');
-
     this.state = {
-      messages: [],
       uid: 0,
-      loggedInText: 'Please wait, you are getting logged in'
+      messages: [
+        {
+          _id: 0,
+          text: 'Please wait, you are getting logged in',
+          createdAt: new Date(),
+          system: true
+        }
+      ]
     };
-  }
+  }//constructor
 
   //  once collection gets updated a snapshot is taken
   onCollectionUpdate = (querySnapshot) => {
@@ -80,6 +82,15 @@ export default class Chat extends React.Component {
     });
   }
 
+  // variable 'user' as used in component GiftedChat
+  get user() {
+    return {
+      _id: this.state.uid,
+      name: this.props.navigation.state.params.name,
+      avatar: 'https://placeimg.com/140/140/any'
+    };
+  }
+
   //function that styles the header bar and sets the the username as title
   static navigationOptions = ({ navigation }) => {
     return {
@@ -115,15 +126,6 @@ export default class Chat extends React.Component {
     )
   }
 
-  // variable 'user' as used in component GiftedChat
-  get user() {
-    return {
-      _id: this.state.uid,
-      name: this.props.navigation.state.params.name,
-      avatar: ''
-    };
-  }
-
   render() {
     // user name as props for nav bar
     const navigation = this.props.navigation.state.params.name;
@@ -132,11 +134,6 @@ export default class Chat extends React.Component {
     return (
       //set the background to the one passed in the params
       <View style={{flex: 1,backgroundColor: chosenColor,}}>
-
-        <Text style={{textAlign: 'center',fontSize: 16, color:'white'}}>
-          {this.state.loggedInText}
-        </Text>
-
         <GiftedChat
           renderBubble={this.renderBubble.bind(this)}
           messages={this.state.messages}
@@ -148,7 +145,6 @@ export default class Chat extends React.Component {
     )//return
   }//render
 
-  // lifecycle upon component mount
   componentDidMount() {
     // listen to authentication events
     this.authUnsubscribe = firebase.auth().onAuthStateChanged((user) => {
@@ -158,9 +154,16 @@ export default class Chat extends React.Component {
       //update user state with currently active user data
       this.setState({
       uid: user.uid,
-      loggedInText: 'Welcome ' + this.user.name,
+      messages: [
+        {
+          _id: 0,
+          text: 'Welcome ' + this.user.name,
+          system: true
+        }
+      ]
       })
-
+      // create a reference to the active user's documents (messages)
+      this.referenceUSer = firebase.firestore().collection('messages').where("uid", "==", this.state.uid); // Y U NO WORK
       // listen for collection changes for current user
       this.unsubscribeUser = this.referenceMessages.onSnapshot(this.onCollectionUpdate);
     })
@@ -171,5 +174,4 @@ export default class Chat extends React.Component {
     this.unsubscribeUser();
     this.authUnsubscribe()
   }
-
-} //Chat class component
+}
