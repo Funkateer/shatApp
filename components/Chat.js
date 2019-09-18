@@ -105,16 +105,6 @@ export default class Chat extends React.Component {
     };
   }
 
-  //hide keyboard and text input UI if user is offline
-  renderInputToolbar(props) {
-    if (this.state.isConnected == false) {
-    } else {
-      return (
-        <InputToolbar {...props}/>
-      )
-    };
-  };
-
   //function that styles the header bar and sets the the username as title
   static navigationOptions = ({ navigation }) => {
     return {
@@ -164,6 +154,9 @@ export default class Chat extends React.Component {
       console.log('Status set to offline from handleConnectivityChange');
       this.setState({
         isConnected: false,
+
+        // clear the message state and start with an empty array
+        message: [],
       });
     }
   }
@@ -171,9 +164,10 @@ export default class Chat extends React.Component {
   //pre-populate chat with local stored messages
   async getMessages() {
     console.log('getMessages() has been invoked')
-    let messages = '';
+    let messages = [];
     try {
       messages = await AsyncStorage.getItem('messages') || [];
+
       this.setState({
         messages: JSON.parse(messages)
       });
@@ -199,6 +193,16 @@ export default class Chat extends React.Component {
       console.log('delete button fired')
     } catch (error) {
       console.log(error.message);
+    };
+  };
+
+  // hide keyboard and text input UI if user is offline
+  renderInputToolbar(props) {
+    if (this.state.isConnected == false) {
+    } else {
+      return (
+        <InputToolbar {...props}/>
+      )
     };
   };
 
