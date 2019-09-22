@@ -21,30 +21,40 @@ export default class CustomActions extends React.Component {
   pickImage = async () => {
     //use expo-permissions to ask user if agrees to open camera roll
     const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
-    if (status === 'granted') {
-      let result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.Images
-      }).catch(error => console.log(error));
+    try{
+      if (status === 'granted') {
+        let result = await ImagePicker.launchImageLibraryAsync({
+          mediaTypes: ImagePicker.MediaTypeOptions.Images
+        }).catch(error => console.log(error));
 
-      if (!result.cancelled) {
-        const imageUrl = await this.uploadImageFetch(result.uri);
-        this.props.onSend({ image: imageUrl })
+        if (!result.cancelled) {
+          const imageUrl = await this.uploadImageFetch(result.uri);
+          this.props.onSend({ image: imageUrl })
+        }
       }
+    }
+    catch(error){
+      console.log(error.message)
     }
   }
 
   //allows user to take a new picture to send
   takePhoto = async () => {
     const { status } = await Permissions.askAsync(Permissions.CAMERA, Permissions.CAMERA_ROLL);
-    if (status === 'granted') {
-      let result = await ImagePicker.launchCameraAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.Images
-      }).catch(error => console.log(error));
+    try{
+      if (status === 'granted') {
+        let result = await ImagePicker.launchCameraAsync({
+          mediaTypes: ImagePicker.MediaTypeOptions.Images
+        }).catch(error => console.log(error));
 
-      if (!result.cancelled) {
-        const imageUrl = await this.uploadImageFetch(result.uri);
-        this.props.onSend({ image: imageUrl })
+        if (!result.cancelled) {
+          const imageUrl = await this.uploadImageFetch(result.uri);
+          this.props.onSend({ image: imageUrl })
+        }
       }
+    }
+    catch(error){
+      console.log(error.message)
     }
   }
 

@@ -26,7 +26,7 @@ export default class Chat extends React.Component {
   constructor() {
     super()
     //firestore credentials for shatApp db
-    var firebaseConfig = {
+    let firebaseConfig = {
       apiKey: "AIzaSyCfkNxTq6SpqLiIl8SD3uH4kIGje8lR79w",
       authDomain: "shatapp-75fd3.firebaseapp.com",
       databaseURL: "https://shatapp-75fd3.firebaseio.com",
@@ -66,21 +66,26 @@ export default class Chat extends React.Component {
     const messages = [];
     messages.push(this.state.systemMessages[0]);
     //go through each document
-    querySnapshot.forEach((doc) => {
-      //get the QueryDocumentSnapshot's data
-      var data = doc.data();
-      messages.push({
-        _id: data._id,
-        text: data.text || '',
-        createdAt: data.createdAt.toDate(),
-        user: data.user,
-        image: data.image || null,
-        location: data.location || null,
+    try{
+      querySnapshot.forEach((doc) => {
+        //get the QueryDocumentSnapshot's data
+        var data = doc.data();
+        messages.push({
+          _id: data._id,
+          text: data.text || '',
+          createdAt: data.createdAt.toDate(),
+          user: data.user,
+          image: data.image || null,
+          location: data.location || null,
+        })
+        this.setState({
+          messages,
+        });
       })
-      this.setState({
-        messages,
-      });
-    })
+    }
+    catch(error){
+      console.log(error.message)
+    }
   };
 
   //add the message object to firestore, called by onSend
@@ -98,12 +103,17 @@ export default class Chat extends React.Component {
 
   //append new messages to the ones saved in the state, Firebase and asyncStorage
   onSend(messages = []) {
-    this.setState(previousState => ({
-      messages: GiftedChat.append(previousState.messages, messages),
-    }), ()=> {
-      this.addMessage();
-      this.saveMessages();
-    })
+    try{
+      this.setState(previousState => ({
+        messages: GiftedChat.append(previousState.messages, messages),
+      }), ()=> {
+        this.addMessage();
+        this.saveMessages();
+      })
+    }
+    catch (error){
+      console.log(error)
+    }
   };
 
   //variable 'user' as used in component GiftedChat
@@ -215,16 +225,6 @@ export default class Chat extends React.Component {
     }
   }
 
-  //deletes the Async storage collection 'messages' (DEV VER only)
-  // async deleteMessages() {
-  //   try {
-  //     await AsyncStorage.removeItem('messages');
-  //     console.log('delete button fired')
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   };
-  // };
-
   // hide keyboard and text input if user is offline
   renderInputToolbar(props) {
     if (this.state.isConnected == false) {
@@ -247,10 +247,6 @@ export default class Chat extends React.Component {
 
         {/* Component shows a red banned on top of the screen in user go offline */}
         <OfflineNotice />
-
-        {/* <TouchableOpacity onPress={this.deleteMessages}>
-          <Text style={styles.btnDelete}>Delete Messages</Text>0
-        </TouchableOpacity> */}
 
         {this.state.uri &&
           // preview of the img taken or selected to be sent
