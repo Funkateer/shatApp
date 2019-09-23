@@ -46,6 +46,7 @@ export default class Chat extends React.Component {
     /**
     * firestore credentials for chat-app db
     */
+
     /**
     * @param {object} firebaseConfig database credentials
     * @param {string} apiKey
@@ -110,6 +111,7 @@ export default class Chat extends React.Component {
     * @param {number} location.longitude longitude coordinate of current location
     * @param {number} location.latitude latitude coordinate of current location
     */
+
     const messages = [];
     messages.push(this.state.systemMessages[0]);
     //go through each document
@@ -154,6 +156,7 @@ export default class Chat extends React.Component {
     * @param {number} location.longitude longitude coordinate of current location
     * @param {number} location.latitude latitude coordinate of current location
     */
+   
     const message = this.state.messages[0];
     this.referenceMessages.add({
       _id: message._id,
