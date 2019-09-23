@@ -1,4 +1,32 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Start.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Start.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
 * @description start.js manages the starting screen of the application chat-app
 */
 
@@ -37,16 +65,16 @@ export default class Start extends React.Component {
     */
     const color = this.state.color;
     return (
-      <ImageBackground source={require('../assets/background-img.png')} style={{ flex: 1, justifyContent: 'space-between' }}>
+      &lt;ImageBackground source={require('../assets/background-img.png')} style={{ flex: 1, justifyContent: 'space-between' }}>
 
-        <Text style={styles.appTitle}>shatApp</Text>
+        &lt;Text style={styles.appTitle}>shatApp&lt;/Text>
 
-        <View style={styles.container}>
+        &lt;View style={styles.container}>
 
 
-          <View style={{flexDirection:'row'}}>
-            <Image source={require('../assets/userIcon.png')} style={{ height: 25, width: 25, right: 3, top: 7}} />
-            <TextInput
+          &lt;View style={{flexDirection:'row'}}>
+            &lt;Image source={require('../assets/userIcon.png')} style={{ height: 25, width: 25, right: 3, top: 7}} />
+            &lt;TextInput
               accessible={true}
               accessibilityLabel="Name input"
               style={styles.nameInput}
@@ -54,12 +82,12 @@ export default class Start extends React.Component {
               value={this.state.name}
               placeholder= 'Enter Your Name'
             />
-          </View>
+          &lt;/View>
 
-          <Text style={styles.colorOption}>Choose Background Color:</Text>
+          &lt;Text style={styles.colorOption}>Choose Background Color:&lt;/Text>
 
-          <View style={styles.colors}>
-            <TouchableOpacity
+          &lt;View style={styles.colors}>
+            &lt;TouchableOpacity
               accessible={true}
               accessibilityLabel="Change chat background color to violet"
               accessibilityRole="button"
@@ -67,12 +95,12 @@ export default class Start extends React.Component {
               onPress={(color) => this.setState({color: '#474056'})}
             >
               { (this.state.color == '#474056') ?
-                (<View style={[styles.active, {borderColor: '#474056'}]} ></View>) :
-                (<View  ></View>)
+                (&lt;View style={[styles.active, {borderColor: '#474056'}]} >&lt;/View>) :
+                (&lt;View  >&lt;/View>)
               }
-            </TouchableOpacity>
+            &lt;/TouchableOpacity>
 
-            <TouchableOpacity
+            &lt;TouchableOpacity
               accessible={true}
               accessibilityLabel="Change chat background color to black"
               accessibilityRole="button"
@@ -80,12 +108,12 @@ export default class Start extends React.Component {
               onPress={(color) => this.setState({color: '#090C08'})}
             >
               { (this.state.color == '#090C08') ?
-                (<View style={[styles.active, {borderColor: '#090C08'}]} ></View>) :
-                (<View  ></View>)
+                (&lt;View style={[styles.active, {borderColor: '#090C08'}]} >&lt;/View>) :
+                (&lt;View  >&lt;/View>)
               }
-            </TouchableOpacity>
+            &lt;/TouchableOpacity>
 
-            <TouchableOpacity
+            &lt;TouchableOpacity
               accessible={true}
               accessibilityLabel="Change chat background color to grey"
               accessibilityRole="button"
@@ -93,12 +121,12 @@ export default class Start extends React.Component {
               onPress={(color) => this.setState({color: '#8A95A5'})}
             >
               { (this.state.color == '#8A95A5') ?
-                (<View style={[styles.active, {borderColor: '#8A95A5'}]} ></View>) :
-                (<View  ></View>)
+                (&lt;View style={[styles.active, {borderColor: '#8A95A5'}]} >&lt;/View>) :
+                (&lt;View  >&lt;/View>)
               }
-            </TouchableOpacity>
+            &lt;/TouchableOpacity>
 
-            <TouchableOpacity
+            &lt;TouchableOpacity
               accessible={true}
               accessibilityLabel="Change chat background color to light green"
               accessibilityRole="button"
@@ -106,21 +134,21 @@ export default class Start extends React.Component {
               onPress={(color) => this.setState({color: '#B9C6AE'})}
             >
               { (this.state.color == '#B9C6AE') ?
-                (<View style={[styles.active, {borderColor: '#B9C6AE'}]} ></View>) :
-                (<View  ></View>)
+                (&lt;View style={[styles.active, {borderColor: '#B9C6AE'}]} >&lt;/View>) :
+                (&lt;View  >&lt;/View>)
               }
-            </TouchableOpacity>
-            </View>
-          <TouchableHighlight style={styles.button}
+            &lt;/TouchableOpacity>
+            &lt;/View>
+          &lt;TouchableHighlight style={styles.button}
             accessible={true}
             accessibilityLabel="Button to submit the form and navigate to chat room"
             accessibilityRole="button"
             //function navigates to the Chat screen with the params of the user's name and background color selected
             onPress={() => this.props.navigation.navigate('Chat', { name: this.state.name, color: this.state.color })}>
-            <Text style={styles.buttonLabel}>Start Chatting</Text>
-          </TouchableHighlight>
-        </View>
-      </ImageBackground>
+            &lt;Text style={styles.buttonLabel}>Start Chatting&lt;/Text>
+          &lt;/TouchableHighlight>
+        &lt;/View>
+      &lt;/ImageBackground>
     )//return
   }//render
 }
@@ -191,3 +219,26 @@ const styles = StyleSheet.create({
     fontSize: 16,
   }
 });
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Chat.html">Chat</a></li><li><a href="CustomActions.html">CustomActions</a></li><li><a href="Start.html">Start</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addMessage">addMessage</a></li><li><a href="global.html#onCollectionUpdate">onCollectionUpdate</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Mon Sep 23 2019 23:04:14 GMT+0200 (Central European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
