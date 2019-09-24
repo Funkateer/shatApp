@@ -1,11 +1,13 @@
 import React, { PureComponent } from 'react';
-import { View, Text, NetInfo, Dimensions, StyleSheet } from 'react-native';
+import {
+  View, Text, NetInfo, Dimensions, StyleSheet,
+} from 'react-native';
 
 const { width } = Dimensions.get('window');
 
 function MiniOfflineSign() {
   return (
-    //red banner on top of the page
+    // red banner on top of the page
     <View style={styles.offlineContainer}>
       <Text style={styles.offlineText}>No Internet Connection</Text>
     </View>
@@ -14,11 +16,11 @@ function MiniOfflineSign() {
 
 class OfflineNotice extends PureComponent {
   state = {
-    isConnected: true
+    isConnected: true,
   };
 
   componentDidMount() {
-    //checks on connection status
+    // checks on connection status
     NetInfo.isConnected.addEventListener('connectionChange', this.handleConnectivityChange);
   }
 
@@ -26,12 +28,12 @@ class OfflineNotice extends PureComponent {
     NetInfo.isConnected.removeEventListener('connectionChange', this.handleConnectivityChange);
   }
 
-  handleConnectivityChange = isConnected => {
-      this.setState({ isConnected });
+  handleConnectivityChange = (isConnected) => {
+    this.setState({ isConnected });
   };
 
   render() {
-    //if connected show the red banner MiniOfflineSign tag
+    // if connected show the red banner MiniOfflineSign tag
     if (!this.state.isConnected) {
       return <MiniOfflineSign />;
     }
@@ -49,9 +51,9 @@ const styles = StyleSheet.create({
     width,
     position: 'absolute',
     top: 30,
-    zIndex:1,
+    zIndex: 1,
   },
-  offlineText: { color: '#fff' }
+  offlineText: { color: '#fff' },
 });
 
 export default OfflineNotice;

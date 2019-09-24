@@ -22,7 +22,7 @@ export default class Start extends React.Component {
     super(props);
     this.state = {
       name: '',
-      color: '#474056'
+      color: '#474056',
     }
   }
 
@@ -115,14 +115,14 @@ export default class Start extends React.Component {
             accessible={true}
             accessibilityLabel="Button to submit the form and navigate to chat room"
             accessibilityRole="button"
-            //function navigates to the Chat screen with the params of the user's name and background color selected
+            // function navigates to the Chat screen with the params of the user's name and background color selected
             onPress={() => this.props.navigation.navigate('Chat', { name: this.state.name, color: this.state.color })}>
             <Text style={styles.buttonLabel}>Start Chatting</Text>
           </TouchableHighlight>
         </View>
       </ImageBackground>
-    )//return
-  }//render
+    )// return
+  }// render
 }
 
 const styles = StyleSheet.create({
