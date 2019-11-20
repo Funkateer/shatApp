@@ -13,7 +13,7 @@ import React from 'react';
 // import react UI components
 import {
   StyleSheet, Text, View, TextInput, ImageBackground,
-  TouchableHighlight, TouchableOpacity, Image
+  TouchableHighlight, TouchableOpacity, Image,
 } from 'react-native';
 
 // class component
@@ -23,7 +23,7 @@ export default class Start extends React.Component {
     this.state = {
       name: '',
       color: '#474056',
-    }
+    };
   }
 
   render() {
@@ -44,7 +44,7 @@ export default class Start extends React.Component {
         <View style={styles.container}>
 
 
-          <View style={{flexDirection:'row'}}>
+          <View style={{ flexDirection: 'row' }}>
             <Image source={require('../assets/userIcon.png')} style={{ height: 25, width: 25, right: 3, top: 7}} />
             <TextInput
               accessible={true}
@@ -121,7 +121,7 @@ export default class Start extends React.Component {
           </TouchableHighlight>
         </View>
       </ImageBackground>
-    )// return
+    );// return
   }// render
 }
 
@@ -150,9 +150,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#757083',
     width: '88%',
-    height:32,
+    height: 32,
     paddingHorizontal: '3%',
-    marginBottom:'14%',
+    marginBottom: '14%',
   },
   colorOption: {
     fontSize: 16,
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     width: '77%',
     height: 40,
-    marginBottom:'20%',
+    marginBottom: '20%',
   },
   circle: {
     height: 40,
@@ -189,5 +189,5 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: '600',
     fontSize: 16,
-  }
+  },
 });
