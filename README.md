@@ -1,6 +1,5 @@
 # Chat App
-Chat App is a React Native application for mobile devices (Android and iOS) that features GiftedChat, a chat UI by Farid Safi. This communication app allows you to
-
+An introvert React-Native app for both iOs and Android devices, provides with a full functioning chat that sends and receives messages, store them locally so it's usable offline and has the feature to share images and location.The app interface is build with Gifted-Chat Library and other react-native libraries for the different features, Google firebase as database, Documentations are auto generated using JSDoc and finally Expo for building and testing
 
 
 ## Screenshots
@@ -8,10 +7,10 @@ Chat App is a React Native application for mobile devices (Android and iOS) that
 
 
 ## Features
-  - select images from your device's storage
-  - take photos
-  - get current geo-location
-  - write send and receive messages
+- Select images from your device's storage
+- Take photos
+- Get current geo-location
+- Write send and receive messages
 
 
 ## Installation
@@ -91,7 +90,7 @@ Project Link: https://github.com/Funkateer/shatApp
 
 
 ## Contact
-Alaeddin Abugrara - [website](http://www.alabugrara.com) - [@twitter](https://twitter.com/twitter_handle) - [Github](https://github.com/Funkateer) - [Linked-in](https://www.linkedin.com/in/al%C3%A0-eddin-abugrara-214ba5115/)
+Alà Eddin Abugrara - [website](http://www.alabugrara.com) - [@twitter](https://twitter.com/twitter_handle) - [Github](https://github.com/Funkateer) - [Linked-in](https://www.linkedin.com/in/al%C3%A0-eddin-abugrara-214ba5115/)
 
 
 <!-- Markdown links & imgs  -->
