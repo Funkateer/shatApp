@@ -3,7 +3,7 @@ An introvert React-Native app for both iOs and Android devices, provides with a 
 
 
 ## Screenshots
-![screenshot](https://alabugrara.com/img/shatApp-poster.png)
+![screenshot](https://alabugrara.com/img/poster-shatApp.png)
 
 
 ## Features
